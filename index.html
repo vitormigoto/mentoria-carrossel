@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+    <script>
+
+    function listar_numeros(){   
+        // Preciso de uma lista que vá de 1 até 10 para imprimir pro meu jogo de bingo
+        const vetor = [];
+        for(let inicial = 0; inicial < 10; inicial=inicial+1 ){ 
+            vetor[inicial] = inicial+1;
+        }
+
+        document.getElementById("lista").innerHTML = vetor;
+    }
+
+    // Listar nomes de uma lista desconhecida
+    const vetor_nomes = ['Vitor','Alex','Lucas','Casimiro'];
+    function lista_nomes(){         
+        let x = 0;
+        while(x < vetor_nomes.length){ 
+            document.getElementById("lista_nomes").innerHTML += vetor_nomes[x] + "<br>";
+            x = x + 1; 
+        }
+    }
+
+    // Some um valor digitado pelo usuario até que o valor seja > 10
+    function soma_numeros(){
+        let num_digitado = 0
+        let soma = 0;
+
+        do{ 
+            num_digitado = prompt("Digite um numero");
+            soma = soma + Number(num_digitado);
+        }while(soma<=10)
+
+        document.getElementById("soma_numeros").innerHTML = soma;
+
+        
+    }
+
+
+    function rolar_direita(){
+        var x = document.getElementById("rolagem").scrollLeft;        
+        document.getElementById("rolagem").scrollTo(x+500,0);
+        if(x>1400){
+            document.getElementById("rolagem").scrollTo(0,0);
+        }
+    }
+
+    function rolar_esquerda(){
+        var x = document.getElementById("rolagem").scrollLeft;
+        document.getElementById("rolagem").scrollTo(x-500,0);
+        if(x<400){
+            document.getElementById("rolagem").scrollTo(1485,0);
+        }
+        
+    }
+
+    </script>
+    <style>
+        #carrosel{
+            border:1px solid #ccc;
+            border-radius: 5px;
+            width:500px;
+            height:400px;
+            background-color:rgb(0, 162, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;            
+        }
+
+        .btn{
+            border:0px solid black;            
+            background-color: transparent;
+            width:40px;
+            height:40px;
+            font-size:24pt;
+            font-weight: bold;
+            color:white;
+            text-align:center;
+            cursor:pointer;
+        }
+
+        #rolagem{ 
+            display:flex;
+            overflow-x: hidden ;
+            scroll-behavior: smooth;
+        }
+
+        .conteudo{
+            border:0px solid black;
+            width:520px;
+            margin:0px 40px;
+            font-size: 24pt;
+            color:white;
+            text-align: center;
+        }
+
+            .conteudo h4{
+                font-family: Arial;
+                margin:0px;
+                padding:0px;
+            }
+
+            img{             
+                border:0px solid black;            
+                margin:10px;
+                height:250px;
+            }
+            a{ 
+                font-size:14pt;
+                font-family: Arial;
+                color:white;
+                text-decoration: none;
+            }
+
+        
+    </style>
+</head>
+<body onload="listar_numeros();lista_nomes();">
+    <a name="topo"></a>
+
+    <div id="lista">
+    </div>
+    <div id="lista_nomes">
+    </div>
+    <div id="soma_numeros">
+    </div>
+
+
+    <div id="carrosel">
+        <button class="btn" onclick="rolar_esquerda()"> < </button>    
+
+        <div id="rolagem">
+            <div id="img1" class="conteudo">                
+                <h4>Moto 1</h4>
+                <a name="img1"></a>
+                <img src="img/moto1.png">                                
+                <a href="#img2">Proxima Imagem</a>
+            </div>
+
+            <div id="img2" class="conteudo">                
+                <h4>Moto 2</h4>
+                
+                <img src="img/moto2.png">      
+                <a name="img2"></a>          
+                <a href="#img3">Proxima Imagem</a>
+            </div>
+
+            <div id="img2" class="conteudo">                
+                <h4>Moto 3</h4>
+                <a name="img3"></a>
+                <img src="img/moto2.png">                
+                <a href="#img4">Proxima Imagem</a>
+            </div>
+
+            <div id="img2" class="conteudo">                
+                <h4>Moto 4</h4>
+                <a name="img4"></a>
+                <img src="img/moto2.png">                
+                <a href="#img1">Proxima Imagem</a>
+            </div>
+        </div>
+        <button class="btn" onclick="rolar_direita()"> > </button>    
+    </div>
+
+
+  
+    
+
+
+</body>
+</html>
